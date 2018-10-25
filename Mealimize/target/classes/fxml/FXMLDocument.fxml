@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="839.0" prefWidth="1423.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Mealimize.GUI.RecipeGuiController">
+   <children>
+      <TabPane layoutX="248.0" layoutY="40.0" prefHeight="838.0" prefWidth="1545.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Ingredienser">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableviewIngredienser" layoutX="32.0" layoutY="80.0" prefHeight="690.0" prefWidth="822.0">
+                          <columns>
+                            <TableColumn fx:id="clmIngredientName" prefWidth="271.0000305175781" text="Navn" />
+                            <TableColumn fx:id="clmCalories" prefWidth="90.0" text="Kalorier" />
+                              <TableColumn fx:id="clmProteins" prefWidth="98.0" text="Proteiner" />
+                              <TableColumn fx:id="clmCarbohydratess" prefWidth="101.0" text="Kulhydrater" />
+                              <TableColumn fx:id="clmFibers" prefWidth="100.0" text="Fibre" />
+                              <TableColumn fx:id="clmFat" prefWidth="88.0" text="Fedt" />
+                              <TableColumn fx:id="clmIngredientID" prefWidth="73.0" text="ID" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="txtfieldSearchIngredient" layoutX="32.0" layoutY="32.0" prefHeight="27.0" prefWidth="820.0" promptText="Søg i ingredienser..." />
+                        <Button fx:id="btnAddIngredient" layoutX="1031.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAddIngredient" text="Tilføj ingrediens" />
+                        <TextField fx:id="txtfieldIngredientName" layoutX="1006.0" layoutY="149.0" promptText="Navn..." />
+                        <TextField fx:id="txtfieldCalories" layoutX="1006.0" layoutY="204.0" promptText="Kalorier..." />
+                        <TextField fx:id="txtfieldProteins" layoutX="1006.0" layoutY="265.0" promptText="Proteiner..." />
+                        <TextField fx:id="txtfieldCarbohydrates" layoutX="1006.0" layoutY="329.0" promptText="Kulhydrater..." />
+                        <TextField fx:id="txtfieldFibers" layoutX="1006.0" layoutY="389.0" promptText="Fibre..." />
+                        <TextField fx:id="txtfieldFat" layoutX="1006.0" layoutY="447.0" promptText="Fedt..." />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Opskrifter">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="827.0" prefWidth="1487.0">
+                     <children>
+                        <Button fx:id="btnNewRecipe" layoutX="650.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleNewRecipe" prefHeight="101.0" prefWidth="268.0" text="Ny opskrift" />
+                        <TableView fx:id="tableviewExistingRecipes" layoutX="45.0" layoutY="46.0" prefHeight="535.0" prefWidth="241.0">
+                          <columns>
+                            <TableColumn fx:id="clmExistingRecipeName" prefWidth="240.0" text="Eksisterende opskr. (Prod. database)" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="txtfieldNewRecipeName" layoutX="325.0" layoutY="36.0" promptText="Opskriftens navn..." visible="false" />
+                        <TextArea fx:id="txtareaGuideStep" layoutX="853.0" layoutY="23.0" prefHeight="217.0" prefWidth="403.0" promptText="Nyt guidestep..." visible="false" />
+                        <TextField fx:id="txtfieldNewRecipeingredientAmount" layoutX="499.0" layoutY="232.0" prefHeight="27.0" prefWidth="76.0" promptText="Mængde..." visible="false">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="btnSaveNewRecipe" layoutX="1171.0" layoutY="764.0" mnemonicParsing="false" onAction="#handleSaveRecipe" text="Gem opskrift" visible="false" />
+                        <Button fx:id="btnNewRecipeAddIngredient" layoutX="500.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleAddIngredientToNewRecipe" text="Tilføj --&gt;" visible="false" />
+                        <Button fx:id="btnAddGuideStep" layoutX="1030.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleAddGuideStep" text="Tilføj" visible="false" />
+                        <TextField fx:id="textfieldNewRecipeSearchingredients" layoutX="325.0" layoutY="111.0" promptText="Søg ingredienser..." visible="false" />
+                        <TableView fx:id="tableviewNewRecipeIngredients" layoutX="323.0" layoutY="143.0" prefHeight="449.0" prefWidth="169.0" visible="false">
+                          <columns>
+                            <TableColumn fx:id="clmNewRecipeIngredients" prefWidth="168.0" text="Navn" />
+                          </columns>
+                        </TableView>
+                        <TableView fx:id="tableviewNewRecipeAddedIngredients" layoutX="583.0" layoutY="140.0" prefHeight="456.0" prefWidth="220.0" visible="false">
+                           <columns>
+                              <TableColumn fx:id="clmNewRecipeAddedIngredientName" prefWidth="137.0" text="Navn" />
+                              <TableColumn fx:id="clmNewRecipeAddedIngredientAmount" prefWidth="82.0" text="Mængde" />
+                           </columns>
+                        </TableView>
+                        <TableView fx:id="tableviewGuideSteps" layoutX="853.0" layoutY="289.0" prefHeight="446.0" prefWidth="420.0" visible="false">
+                          <columns>
+                            <TableColumn fx:id="clmGuidestepContent" prefWidth="361.0" text="Indhold" />
+                            <TableColumn fx:id="clmGuidestepNumber" prefWidth="58.0" text="Step nr" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="txtfieldSearchRecipes" layoutX="45.0" layoutY="10.0" promptText="Søg opskrifter..." />
+                        <TextField fx:id="txtfieldUnitMeasurement" layoutX="499.0" layoutY="199.0" prefHeight="27.0" prefWidth="75.0" promptText="Enhed..." visible="false">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="btnRemoveAddedIngredient" layoutX="501.0" layoutY="451.0" mnemonicParsing="false" text="&lt;-- Fjern" visible="false" />
+                        <TextArea fx:id="txtAreaNewRecipeShortDescription" layoutX="533.0" layoutY="36.0" prefHeight="86.0" prefWidth="278.0" promptText="Kort beskrivelse..." visible="false" wrapText="true" />
+                        <TableView fx:id="tableviewDatRecipes" layoutX="1288.0" layoutY="22.0" prefHeight="652.0" prefWidth="126.0">
+                          <columns>
+                            <TableColumn fx:id="clmDatRecipesName" prefWidth="125.6000732421875" text=".dat Opskrifter" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="btnUpdateDatFile" layoutX="1288.0" layoutY="715.0" mnemonicParsing="false" onAction="#handleUpdateDatFile" text="Opdater .dat Fil" />
+                        <Button fx:id="btnLoadDatRecipes" layoutX="1288.0" layoutY="681.0" mnemonicParsing="false" onAction="#handleLoadDatFile" text="Hent .dat Fil" />
+                        <Button fx:id="btnPrintSQL" layoutX="1288.0" layoutY="751.0" mnemonicParsing="false" onAction="#handlePrintSQL" text="Print SQL" />
+                        <ImageView fx:id="imageviewRecipe" fitHeight="181.0" fitWidth="240.0" layoutX="45.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imgviewNewRecipe" fitHeight="168.0" fitWidth="320.0" layoutX="483.0" layoutY="608.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="btnAddPictureOfNewRecipe" layoutX="325.0" layoutY="661.0" mnemonicParsing="false" onAction="#handleAddPictureOfNewRecipe" text="Add picture of recipe" visible="false" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Suggest Recipes">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableviewSuggestRecipes" layoutX="39.0" layoutY="323.0" prefHeight="432.0" prefWidth="366.0">
+                          <columns>
+                            <TableColumn fx:id="clmSuggestRecipesName" prefWidth="281.9999694824219" text="Navn" />
+                            <TableColumn fx:id="clmSuggestRecipesID" minWidth="0.0" prefWidth="83.0" text="ID" />
+                          </columns>
+                        </TableView>
+                        <TableView fx:id="tableviewSuggestedRecipeIngredients" layoutX="770.0" layoutY="327.0" prefHeight="422.0" prefWidth="283.0">
+                          <columns>
+                            <TableColumn fx:id="clmSuggestedRecipesIngredientName" prefWidth="196.0" text="Navn" />
+                            <TableColumn fx:id="clmSuggestedRecipesIngredientID" prefWidth="86.0" text="ID" />
+                          </columns>
+                        </TableView>
+                        <TableView fx:id="tableviewAlreadySuggestedRecipes" layoutX="514.0" layoutY="327.0" prefHeight="420.0" prefWidth="243.0">
+                          <columns>
+                            <TableColumn fx:id="clmAlreadySuggestedRecipesName" prefWidth="242.0" text="Navn" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="39.0" layoutY="303.0" text="Foreslåede Opskrifter" />
+                        <Label layoutX="514.0" layoutY="303.0" text="Nej tak" />
+                        <Label layoutX="770.0" layoutY="303.0" text="Ingredienser" />
+                        <TableView fx:id="tableviewSuggestRecipeIngredientAllergies" layoutX="1065.0" layoutY="325.0" prefHeight="424.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="clmSuggestRecipesIngredientAllergiesName" prefWidth="144.0" text="Navn" />
+                            <TableColumn fx:id="clmSuggestRecipesIngredientAllergiesID" prefWidth="55.0" text="ID" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="1065.0" layoutY="303.0" text="Allergier" />
+                        <TableView fx:id="tableviewUsers" layoutX="39.0" layoutY="53.0" prefHeight="213.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="clmUser" prefWidth="122.99993896484375" text="Brugernavn" />
+                            <TableColumn fx:id="clmUserid" prefWidth="77.00003051757812" text="BrugerID" />
+                          </columns>
+                        </TableView>
+                        <TableView fx:id="tableviewUserAllergies" layoutX="251.0" layoutY="53.0" prefHeight="212.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="clmUserAllergyName" prefWidth="138.0" text="Navn" />
+                            <TableColumn fx:id="clmUserAllergyID" prefWidth="61.0" text="ID" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="39.0" layoutY="29.0" text="Brugere" />
+                        <Label layoutX="251.0" layoutY="29.0" text="Allergier" />
+                        <Button fx:id="btnSuggestRecipes" layoutX="467.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleSuggestRecipes" text="Foreslå opskrifter" />
+                        <Button fx:id="btnAddSuggestRecipesToAlreadySuggested" layoutX="430.0" layoutY="512.0" mnemonicParsing="false" onAction="#handleAddRecipeToAlreadySuggested" text="Nej tak" />
+                        <Button fx:id="btnClearSuggestedRecipes" layoutX="985.0" layoutY="89.0" mnemonicParsing="false" onAction="#handleClearSuggestedRecipes" text="Clear" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
